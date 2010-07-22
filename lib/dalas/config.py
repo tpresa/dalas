@@ -1,9 +1,9 @@
 import yaml
 import sys
 
-def getProgramArgs():
-	def banner():
-		print """
+# Prints the usage and exits
+def usage():
+	print """
 Usage: %s -c configFile
 Options available:
 -c ,    --conf            Path to the configuration file
@@ -11,12 +11,15 @@ Options available:
 -v ,    --version         Print program version
 
 Bugs: <reinaldoc@gmail.com>.
-		""".strip() % sys.argv[0]
-		sys.exit(1)
+	""".strip() % sys.argv[0]
+	sys.exit(1)
 
-	def version():
-		print DALAS_VERSION
-		sys.exit(0)
+# Print the version
+def version():
+	print DALAS_VERSION
+	sys.exit(0)
+
+def getProgramArgs():
 
 	readArgs = {"-c": 1}
 	lastArg = ""
@@ -24,7 +27,7 @@ Bugs: <reinaldoc@gmail.com>.
 		if readArgs.get(lastArg) == 2:
 			readArgs[lastArg] = arg
 		elif readArgs.get(lastArg) == 1:
-			banner()
+			usage()
 		lastArg = arg
 
 		if arg == '-c' or arg == '--conf':
@@ -34,7 +37,7 @@ Bugs: <reinaldoc@gmail.com>.
 			version()
 
 	if type(readArgs.get('-c')) == type(0):
-		banner()
+		usage()
 	return readArgs
 
 def config():
