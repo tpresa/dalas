@@ -1,0 +1,14 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+import os, sys
+
+DALAS_PATH  = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+DALAS_VERSION = "0.1"
+
+# Import dalas app
+sys.path.append(os.path.join(DALAS_PATH, "lib"))
+from dalas import *
+
+# Run
+Dalas().run()
