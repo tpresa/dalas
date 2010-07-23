@@ -1,4 +1,4 @@
 from dalas.log import Log
 
-class PostfixLog(Log):
+class DSpamLog(Log):
 	pass
