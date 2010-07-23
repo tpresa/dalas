@@ -1,0 +1,1 @@
+Aug 28 06:33:19 web49 postfix/smtp[31717]: EB9333C8130: to=<ghernandez@drewtina.com>, relay=mx1.emailsrvr.com[66.216.121.101], delay=2, status=sent (250 2.0.0 Ok: queued as 455711
