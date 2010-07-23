@@ -1,0 +1,11 @@
+firewall:
+    path: /var/log/syslog
+    database: "mysql://logUser:logPass@localhost:3306/Log"
+    processors:
+        IptablesLog
+        GenericLog
+mails:
+    path: /var/log/syslog
+    database: "mysql://logUser:logPass@localhost:3306/Log"
+    processors:
+        PostfixLog
