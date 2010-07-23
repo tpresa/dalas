@@ -23,6 +23,7 @@ class Module:
 		for pipe in self.pipeline:
 			if not (pipe.process(line)):
 				break
+			print repr(pipe.process(line)) #FIXME Send to database instead of printing
 
 	# Open file description
 	def open(self):

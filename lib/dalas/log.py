@@ -3,7 +3,4 @@ class Log:
 		self.module = module
 	
 	def process(self, line):
-		print line
 		return True
-
-        

@@ -1,0 +1,200 @@
+Jul 18 06:25:07 debian-base postfix/pickup[30460]: 3FD7A611BC: uid=0 from=<root>
+Jul 18 06:25:07 debian-base postfix/cleanup[30719]: 3FD7A611BC: message-id=<20100718092507.3FD7A611BC@debian-base.pop-es.rnp.br>
+Jul 18 06:25:07 debian-base postfix/qmgr[1950]: 3FD7A611BC: from=<root@pop-es.rnp.br>, size=710, nrcpt=1 (queue active)
+Jul 18 06:25:09 debian-base postfix/smtp[30721]: 3FD7A611BC: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.157.27]:25, delay=7, delays=4.9/0.01/0.38/1.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279445113 v2si8941642anf.10)
+Jul 18 06:25:09 debian-base postfix/qmgr[1950]: 3FD7A611BC: removed
+Jul 18 07:00:11 debian-base postfix/pickup[30460]: 20FC861201: uid=0 from=<root>
+Jul 18 07:00:11 debian-base postfix/cleanup[30909]: 20FC861201: message-id=<20100718100011.20FC861201@debian-base.pop-es.rnp.br>
+Jul 18 07:00:11 debian-base postfix/qmgr[1950]: 20FC861201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 07:00:17 debian-base postfix/smtp[30911]: 20FC861201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=6.5, delays=0.06/0.01/1.2/5.3, dsn=2.0.0, status=sent (250 2.0.0 OK 1279447217 c5si9140048ybi.82)
+Jul 18 07:00:17 debian-base postfix/qmgr[1950]: 20FC861201: removed
+Jul 18 08:00:07 debian-base postfix/pickup[30997]: 074EF61201: uid=0 from=<root>
+Jul 18 08:00:07 debian-base postfix/cleanup[31124]: 074EF61201: message-id=<20100718110007.074EF61201@debian-base.pop-es.rnp.br>
+Jul 18 08:00:07 debian-base postfix/qmgr[1950]: 074EF61201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 08:00:09 debian-base postfix/smtp[31126]: 074EF61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.65.27]:25, delay=2.4, delays=0.06/0.01/0.54/1.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279450809 u32si9208673yba.92)
+Jul 18 08:00:09 debian-base postfix/qmgr[1950]: 074EF61201: removed
+Jul 18 09:00:07 debian-base postfix/pickup[30997]: 06D8F61201: uid=0 from=<root>
+Jul 18 09:00:07 debian-base postfix/cleanup[31338]: 06D8F61201: message-id=<20100718120007.06D8F61201@debian-base.pop-es.rnp.br>
+Jul 18 09:00:07 debian-base postfix/qmgr[1950]: 06D8F61201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 09:00:09 debian-base postfix/smtp[31340]: 06D8F61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=2, delays=0.05/0.01/1.1/0.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279454408 s8si9057777anc.138)
+Jul 18 09:00:09 debian-base postfix/qmgr[1950]: 06D8F61201: removed
+Jul 18 10:00:06 debian-base postfix/pickup[31348]: EED2E61201: uid=0 from=<root>
+Jul 18 10:00:06 debian-base postfix/cleanup[31561]: EED2E61201: message-id=<20100718130006.EED2E61201@debian-base.pop-es.rnp.br>
+Jul 18 10:00:07 debian-base postfix/qmgr[1950]: EED2E61201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 10:00:08 debian-base postfix/smtp[31563]: EED2E61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=1.9, delays=0.06/0.02/0.66/1.2, dsn=2.0.0, status=sent (250 2.0.0 OK 1279458008 u5si9382174yba.38)
+Jul 18 10:00:08 debian-base postfix/qmgr[1950]: EED2E61201: removed
+Jul 18 11:00:06 debian-base postfix/pickup[31707]: 7558361201: uid=0 from=<root>
+Jul 18 11:00:06 debian-base postfix/cleanup[31776]: 7558361201: message-id=<20100718140006.7558361201@debian-base.pop-es.rnp.br>
+Jul 18 11:00:06 debian-base postfix/qmgr[1950]: 7558361201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 11:00:09 debian-base postfix/smtp[31778]: 7558361201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=3.2, delays=0.04/0.02/1.3/1.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279461609 t16si9468279ybe.42)
+Jul 18 11:00:09 debian-base postfix/qmgr[1950]: 7558361201: removed
+Jul 18 12:00:06 debian-base postfix/pickup[31707]: B887461201: uid=0 from=<root>
+Jul 18 12:00:06 debian-base postfix/cleanup[31992]: B887461201: message-id=<20100718150006.B887461201@debian-base.pop-es.rnp.br>
+Jul 18 12:00:06 debian-base postfix/qmgr[1950]: B887461201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 12:00:08 debian-base postfix/smtp[31994]: B887461201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=2.2, delays=0.04/0.02/1.2/0.93, dsn=2.0.0, status=sent (250 2.0.0 OK 1279465208 m11si9551636ybn.36)
+Jul 18 12:00:08 debian-base postfix/qmgr[1950]: B887461201: removed
+Jul 18 13:00:06 debian-base postfix/pickup[32063]: 6C80261201: uid=0 from=<root>
+Jul 18 13:00:06 debian-base postfix/cleanup[32207]: 6C80261201: message-id=<20100718160006.6C80261201@debian-base.pop-es.rnp.br>
+Jul 18 13:00:06 debian-base postfix/qmgr[1950]: 6C80261201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 13:00:09 debian-base postfix/smtp[32209]: 6C80261201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.65.27]:25, delay=2.8, delays=0.04/0.01/0.71/2.1, dsn=2.0.0, status=sent (250 2.0.0 OK 1279468809 f5si9413367anh.104)
+Jul 18 13:00:09 debian-base postfix/qmgr[1950]: 6C80261201: removed
+Jul 18 14:00:06 debian-base postfix/pickup[32410]: B6B7B61201: uid=0 from=<root>
+Jul 18 14:00:06 debian-base postfix/cleanup[32422]: B6B7B61201: message-id=<20100718170006.B6B7B61201@debian-base.pop-es.rnp.br>
+Jul 18 14:00:06 debian-base postfix/qmgr[1950]: B6B7B61201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 14:00:08 debian-base postfix/smtp[32424]: B6B7B61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=1.7, delays=0.04/0.02/0.56/1.1, dsn=2.0.0, status=sent (250 2.0.0 OK 1279472408 o13si9536212anh.64)
+Jul 18 14:00:08 debian-base postfix/qmgr[1950]: B6B7B61201: removed
+Jul 18 15:00:06 debian-base postfix/pickup[32410]: CC39F61201: uid=0 from=<root>
+Jul 18 15:00:06 debian-base postfix/cleanup[32636]: CC39F61201: message-id=<20100718180006.CC39F61201@debian-base.pop-es.rnp.br>
+Jul 18 15:00:06 debian-base postfix/qmgr[1950]: CC39F61201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 18 15:00:09 debian-base postfix/smtp[32638]: CC39F61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=2.6, delays=0.04/0.01/1/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279476009 u11si9592345anh.173)
+Jul 18 15:00:09 debian-base postfix/qmgr[1950]: CC39F61201: removed
+Jul 18 16:00:07 debian-base postfix/pickup[32764]: 6263C61201: uid=0 from=<root>
+Jul 18 16:00:07 debian-base postfix/cleanup[383]: 6263C61201: message-id=<20100718190007.6263C61201@debian-base.pop-es.rnp.br>
+Jul 18 16:00:07 debian-base postfix/qmgr[1950]: 6263C61201: from=<root@pop-es.rnp.br>, size=641, nrcpt=1 (queue active)
+Jul 18 16:00:09 debian-base postfix/smtp[385]: 6263C61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.65.27]:25, delay=2.4, delays=0.04/0.02/1.4/1, dsn=2.0.0, status=sent (250 2.0.0 OK 1279479609 v2si9709372anf.110)
+Jul 18 16:00:09 debian-base postfix/qmgr[1950]: 6263C61201: removed
+Jul 18 17:00:06 debian-base postfix/pickup[32764]: C836461201: uid=0 from=<root>
+Jul 18 17:00:06 debian-base postfix/cleanup[599]: C836461201: message-id=<20100718200006.C836461201@debian-base.pop-es.rnp.br>
+Jul 18 17:00:06 debian-base postfix/qmgr[1950]: C836461201: from=<root@pop-es.rnp.br>, size=641, nrcpt=1 (queue active)
+Jul 18 17:00:09 debian-base postfix/smtp[601]: C836461201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=2.5, delays=0.04/0.01/0.95/1.5, dsn=2.0.0, status=sent (250 2.0.0 OK 1279483209 u32si10005368yba.92)
+Jul 18 17:00:09 debian-base postfix/qmgr[1950]: C836461201: removed
+Jul 18 18:00:06 debian-base postfix/pickup[649]: 91E1161201: uid=0 from=<root>
+Jul 18 18:00:06 debian-base postfix/cleanup[815]: 91E1161201: message-id=<20100718210006.91E1161201@debian-base.pop-es.rnp.br>
+Jul 18 18:00:06 debian-base postfix/qmgr[1950]: 91E1161201: from=<root@pop-es.rnp.br>, size=641, nrcpt=1 (queue active)
+Jul 18 18:00:08 debian-base postfix/smtp[817]: 91E1161201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.65.27]:25, delay=2, delays=0.04/0.01/0.71/1.2, dsn=2.0.0, status=sent (250 2.0.0 OK 1279486808 f5si9879244anh.104)
+Jul 18 18:00:08 debian-base postfix/qmgr[1950]: 91E1161201: removed
+Jul 18 19:00:06 debian-base postfix/pickup[1002]: 86E6E61201: uid=0 from=<root>
+Jul 18 19:00:06 debian-base postfix/cleanup[1030]: 86E6E61201: message-id=<20100718220006.86E6E61201@debian-base.pop-es.rnp.br>
+Jul 18 19:00:06 debian-base postfix/qmgr[1950]: 86E6E61201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 18 19:00:08 debian-base postfix/smtp[1033]: 86E6E61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=1.8, delays=0.04/0.02/0.67/1.1, dsn=2.0.0, status=sent (250 2.0.0 OK 1279490408 s19si5998210ybm.50)
+Jul 18 19:00:08 debian-base postfix/qmgr[1950]: 86E6E61201: removed
+Jul 18 20:00:06 debian-base postfix/pickup[1002]: 95D6B61201: uid=0 from=<root>
+Jul 18 20:00:06 debian-base postfix/cleanup[1245]: 95D6B61201: message-id=<20100718230006.95D6B61201@debian-base.pop-es.rnp.br>
+Jul 18 20:00:06 debian-base postfix/qmgr[1950]: 95D6B61201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 18 20:00:09 debian-base postfix/smtp[1247]: 95D6B61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=2.5, delays=0.04/0.02/1.2/1.3, dsn=2.0.0, status=sent (250 2.0.0 OK 1279494009 z14si10022091anl.148)
+Jul 18 20:00:09 debian-base postfix/qmgr[1950]: 95D6B61201: removed
+Jul 18 21:00:06 debian-base postfix/pickup[1357]: F0E8F61201: uid=0 from=<root>
+Jul 18 21:00:07 debian-base postfix/cleanup[1462]: F0E8F61201: message-id=<20100719000006.F0E8F61201@debian-base.pop-es.rnp.br>
+Jul 18 21:00:07 debian-base postfix/qmgr[1950]: F0E8F61201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 18 21:00:10 debian-base postfix/smtp[1464]: F0E8F61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.157.27]:25, delay=3.1, delays=0.04/0.01/1/2, dsn=2.0.0, status=sent (250 2.0.0 OK 1279497610 m11si10336472ybn.36)
+Jul 18 21:00:10 debian-base postfix/qmgr[1950]: F0E8F61201: removed
+Jul 18 22:00:07 debian-base postfix/pickup[1357]: 6616961201: uid=0 from=<root>
+Jul 18 22:00:07 debian-base postfix/cleanup[1678]: 6616961201: message-id=<20100719010007.6616961201@debian-base.pop-es.rnp.br>
+Jul 18 22:00:07 debian-base postfix/qmgr[1950]: 6616961201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 18 22:00:10 debian-base postfix/smtp[1680]: 6616961201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=2.8, delays=0.04/0.01/1.1/1.7, dsn=2.0.0, status=sent (250 2.0.0 OK 1279501210 s8si10206931anc.38)
+Jul 18 22:00:10 debian-base postfix/qmgr[1950]: 6616961201: removed
+Jul 18 23:00:06 debian-base postfix/pickup[1712]: CAC6261201: uid=0 from=<root>
+Jul 18 23:00:06 debian-base postfix/cleanup[1893]: CAC6261201: message-id=<20100719020006.CAC6261201@debian-base.pop-es.rnp.br>
+Jul 18 23:00:06 debian-base postfix/qmgr[1950]: CAC6261201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 18 23:00:09 debian-base postfix/smtp[1895]: CAC6261201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=2.2, delays=0.04/0.01/0.86/1.3, dsn=2.0.0, status=sent (250 2.0.0 OK 1279504808 r21si10249958anp.126)
+Jul 18 23:00:09 debian-base postfix/qmgr[1950]: CAC6261201: removed
+Jul 19 00:00:06 debian-base postfix/pickup[2072]: BFEA661201: uid=0 from=<root>
+Jul 19 00:00:06 debian-base postfix/cleanup[2118]: BFEA661201: message-id=<20100719030006.BFEA661201@debian-base.pop-es.rnp.br>
+Jul 19 00:00:06 debian-base postfix/qmgr[1950]: BFEA661201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 00:00:09 debian-base postfix/smtp[2120]: BFEA661201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=2.2, delays=0.04/0.02/0.5/1.7, dsn=2.0.0, status=sent (250 2.0.0 OK 1279508408 w7si10564938ybe.41)
+Jul 19 00:00:09 debian-base postfix/qmgr[1950]: BFEA661201: removed
+Jul 19 01:00:06 debian-base postfix/pickup[2072]: DB2F161201: uid=0 from=<root>
+Jul 19 01:00:06 debian-base postfix/cleanup[2332]: DB2F161201: message-id=<20100719040006.DB2F161201@debian-base.pop-es.rnp.br>
+Jul 19 01:00:06 debian-base postfix/qmgr[1950]: DB2F161201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 01:00:09 debian-base postfix/smtp[2334]: DB2F161201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=3, delays=0.04/0.01/1.3/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279512009 b5si10388799ana.181)
+Jul 19 01:00:09 debian-base postfix/qmgr[1950]: DB2F161201: removed
+Jul 19 02:00:06 debian-base postfix/pickup[2426]: 549BB61201: uid=0 from=<root>
+Jul 19 02:00:06 debian-base postfix/cleanup[2547]: 549BB61201: message-id=<20100719050006.549BB61201@debian-base.pop-es.rnp.br>
+Jul 19 02:00:06 debian-base postfix/qmgr[1950]: 549BB61201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 02:00:08 debian-base postfix/smtp[2549]: 549BB61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=2.5, delays=0.04/0.02/0.68/1.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279515608 d3si10735075ybi.12)
+Jul 19 02:00:08 debian-base postfix/qmgr[1950]: 549BB61201: removed
+Jul 19 03:00:06 debian-base postfix/pickup[2426]: 8907161201: uid=0 from=<root>
+Jul 19 03:00:06 debian-base postfix/cleanup[2761]: 8907161201: message-id=<20100719060006.8907161201@debian-base.pop-es.rnp.br>
+Jul 19 03:00:06 debian-base postfix/qmgr[1950]: 8907161201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 03:00:09 debian-base postfix/smtp[2763]: 8907161201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=2.6, delays=0.04/0.02/0.87/1.7, dsn=2.0.0, status=sent (250 2.0.0 OK 1279519209 q8si10606345and.16)
+Jul 19 03:00:09 debian-base postfix/qmgr[1950]: 8907161201: removed
+Jul 19 04:00:06 debian-base postfix/pickup[2777]: A4E2261201: uid=0 from=<root>
+Jul 19 04:00:06 debian-base postfix/cleanup[2976]: A4E2261201: message-id=<20100719070006.A4E2261201@debian-base.pop-es.rnp.br>
+Jul 19 04:00:06 debian-base postfix/qmgr[1950]: A4E2261201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 04:00:09 debian-base postfix/smtp[2978]: A4E2261201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=2.5, delays=0.04/0.01/0.89/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279522809 r28si6693097yba.88)
+Jul 19 04:00:09 debian-base postfix/qmgr[1950]: A4E2261201: removed
+Jul 19 05:00:07 debian-base postfix/pickup[3128]: 247AB61201: uid=0 from=<root>
+Jul 19 05:00:07 debian-base postfix/cleanup[3191]: 247AB61201: message-id=<20100719080007.247AB61201@debian-base.pop-es.rnp.br>
+Jul 19 05:00:07 debian-base postfix/qmgr[1950]: 247AB61201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 05:00:09 debian-base postfix/smtp[3193]: 247AB61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=2.8, delays=0.07/0.01/1.1/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279526409 o5si10764569anb.87)
+Jul 19 05:00:09 debian-base postfix/qmgr[1950]: 247AB61201: removed
+Jul 19 06:00:07 debian-base postfix/pickup[3128]: 2179061201: uid=0 from=<root>
+Jul 19 06:00:07 debian-base postfix/cleanup[3404]: 2179061201: message-id=<20100719090007.2179061201@debian-base.pop-es.rnp.br>
+Jul 19 06:00:07 debian-base postfix/qmgr[1950]: 2179061201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 06:00:10 debian-base postfix/smtp[3406]: 2179061201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=3.4, delays=0.06/0.01/1.2/2.1, dsn=2.0.0, status=sent (250 2.0.0 OK 1279530010 m39si10865638ann.70)
+Jul 19 06:00:10 debian-base postfix/qmgr[1950]: 2179061201: removed
+Jul 19 07:00:07 debian-base postfix/pickup[3482]: 5108561201: uid=0 from=<root>
+Jul 19 07:00:07 debian-base postfix/cleanup[3693]: 5108561201: message-id=<20100719100007.5108561201@debian-base.pop-es.rnp.br>
+Jul 19 07:00:07 debian-base postfix/qmgr[1950]: 5108561201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 07:00:10 debian-base postfix/smtp[3695]: 5108561201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=3.1, delays=0.07/0.01/1.4/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279533610 k4si7005982ybe.32)
+Jul 19 07:00:10 debian-base postfix/qmgr[1950]: 5108561201: removed
+Jul 19 08:00:07 debian-base postfix/pickup[3907]: 2B93861201: uid=0 from=<root>
+Jul 19 08:00:07 debian-base postfix/cleanup[3908]: 2B93861201: message-id=<20100719110007.2B93861201@debian-base.pop-es.rnp.br>
+Jul 19 08:00:07 debian-base postfix/qmgr[1950]: 2B93861201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 08:00:09 debian-base postfix/smtp[3910]: 2B93861201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=2.6, delays=0.07/0.01/0.78/1.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279537209 q31si11327867ybk.50)
+Jul 19 08:00:09 debian-base postfix/qmgr[1950]: 2B93861201: removed
+Jul 19 09:00:09 debian-base postfix/pickup[3907]: 2EBEC61201: uid=0 from=<root>
+Jul 19 09:00:09 debian-base postfix/cleanup[4154]: 2EBEC61201: message-id=<20100719120009.2EBEC61201@debian-base.pop-es.rnp.br>
+Jul 19 09:00:09 debian-base postfix/qmgr[1950]: 2EBEC61201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 09:00:10 debian-base postfix/smtp[4156]: 2EBEC61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=1.6, delays=0.09/0.01/0.55/0.96, dsn=2.0.0, status=sent (250 2.0.0 OK 1279540810 q2si11496314ybe.9)
+Jul 19 09:00:10 debian-base postfix/qmgr[1950]: 2EBEC61201: removed
+Jul 19 10:00:10 debian-base postfix/pickup[4291]: D81A261201: uid=0 from=<root>
+Jul 19 10:00:10 debian-base postfix/cleanup[4383]: D81A261201: message-id=<20100719130010.D81A261201@debian-base.pop-es.rnp.br>
+Jul 19 10:00:10 debian-base postfix/qmgr[1950]: D81A261201: from=<root@pop-es.rnp.br>, size=642, nrcpt=1 (queue active)
+Jul 19 10:00:13 debian-base postfix/smtp[4385]: D81A261201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.157.27]:25, delay=2.9, delays=0.05/0.01/0.81/2, dsn=2.0.0, status=sent (250 2.0.0 OK 1279544413 c5si11617210ybi.82)
+Jul 19 10:00:13 debian-base postfix/qmgr[1950]: D81A261201: removed
+Jul 19 10:08:27 debian-base postfix/pickup[4291]: 480E661200: uid=33 from=<www-data>
+Jul 19 10:08:27 debian-base postfix/cleanup[4416]: 480E661200: message-id=<rt-3.8.5-30725-1279544906-207.1410-4-0@pop-es.rnp.br>
+Jul 19 10:08:27 debian-base postfix/qmgr[1950]: 480E661200: from=<www-data@pop-es.rnp.br>, size=33435, nrcpt=5 (queue active)
+Jul 19 10:08:31 debian-base postfix/smtp[4418]: 480E661200: to=<magnos@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=4.1, delays=0.12/0.02/1.2/2.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279544913 m11si11650793ybn.36)
+Jul 19 10:08:31 debian-base postfix/smtp[4418]: 480E661200: to=<pedropn@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=4.1, delays=0.12/0.02/1.2/2.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279544913 m11si11650793ybn.36)
+Jul 19 10:08:31 debian-base postfix/smtp[4418]: 480E661200: to=<rezo@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=4.1, delays=0.12/0.02/1.2/2.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279544913 m11si11650793ybn.36)
+Jul 19 10:08:31 debian-base postfix/smtp[4418]: 480E661200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=4.1, delays=0.12/0.02/1.2/2.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279544913 m11si11650793ybn.36)
+Jul 19 10:08:31 debian-base postfix/smtp[4418]: 480E661200: to=<thiago@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.67.27]:25, delay=4.1, delays=0.12/0.02/1.2/2.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279544913 m11si11650793ybn.36)
+Jul 19 10:08:31 debian-base postfix/qmgr[1950]: 480E661200: removed
+Jul 19 10:31:21 debian-base postfix/pickup[4291]: 6A25561200: uid=33 from=<www-data>
+Jul 19 10:31:21 debian-base postfix/cleanup[4503]: 6A25561200: message-id=<rt-3.8.5-30725-1279546281-521.1266-2-0@pop-es.rnp.br>
+Jul 19 10:31:21 debian-base postfix/qmgr[1950]: 6A25561200: from=<www-data@pop-es.rnp.br>, size=1192, nrcpt=1 (queue active)
+Jul 19 10:31:26 debian-base postfix/smtp[4505]: 6A25561200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=4.6, delays=0.08/0.01/1.1/3.4, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546294 y13si11493836anc.51)
+Jul 19 10:31:26 debian-base postfix/qmgr[1950]: 6A25561200: removed
+Jul 19 10:31:44 debian-base postfix/pickup[4291]: DCC3961200: uid=33 from=<www-data>
+Jul 19 10:31:44 debian-base postfix/cleanup[4503]: DCC3961200: message-id=<rt-3.8.5-30725-1279546304-0.1265-2-0@pop-es.rnp.br>
+Jul 19 10:31:44 debian-base postfix/qmgr[1950]: DCC3961200: from=<www-data@pop-es.rnp.br>, size=1184, nrcpt=1 (queue active)
+Jul 19 10:31:49 debian-base postfix/smtp[4505]: DCC3961200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=4.8, delays=0.03/0/2.9/1.9, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546318 v2si11539007ani.1)
+Jul 19 10:31:49 debian-base postfix/qmgr[1950]: DCC3961200: removed
+Jul 19 10:31:52 debian-base postfix/pickup[4291]: B18A261200: uid=33 from=<www-data>
+Jul 19 10:31:52 debian-base postfix/cleanup[4503]: B18A261200: message-id=<rt-3.8.5-30728-1279546312-1612.1263-2-0@pop-es.rnp.br>
+Jul 19 10:31:52 debian-base postfix/qmgr[1950]: B18A261200: from=<www-data@pop-es.rnp.br>, size=1187, nrcpt=1 (queue active)
+Jul 19 10:31:54 debian-base postfix/smtp[4505]: B18A261200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=1.8, delays=0.03/0/1.1/0.63, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546323 p20si7517380ybk.49)
+Jul 19 10:31:54 debian-base postfix/qmgr[1950]: B18A261200: removed
+Jul 19 10:32:11 debian-base postfix/pickup[4291]: 9BBE661200: uid=33 from=<www-data>
+Jul 19 10:32:11 debian-base postfix/cleanup[4503]: 9BBE661200: message-id=<rt-3.8.5-30725-1279546331-47.1258-2-0@pop-es.rnp.br>
+Jul 19 10:32:11 debian-base postfix/qmgr[1950]: 9BBE661200: from=<www-data@pop-es.rnp.br>, size=1191, nrcpt=1 (queue active)
+Jul 19 10:32:13 debian-base postfix/smtp[4505]: 9BBE661200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=1.4, delays=0.04/0/0.75/0.62, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546341 q1si7529339ybk.17)
+Jul 19 10:32:13 debian-base postfix/qmgr[1950]: 9BBE661200: removed
+Jul 19 10:32:20 debian-base postfix/pickup[4291]: 1EB9D61200: uid=33 from=<www-data>
+Jul 19 10:32:20 debian-base postfix/cleanup[4503]: 1EB9D61200: message-id=<rt-3.8.5-30725-1279546340-1423.1257-2-0@pop-es.rnp.br>
+Jul 19 10:32:20 debian-base postfix/qmgr[1950]: 1EB9D61200: from=<www-data@pop-es.rnp.br>, size=1193, nrcpt=1 (queue active)
+Jul 19 10:32:29 debian-base postfix/smtp[4505]: 1EB9D61200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=9.6, delays=0.03/0/3.4/6.2, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546358 t1si11508335ano.24)
+Jul 19 10:32:29 debian-base postfix/qmgr[1950]: 1EB9D61200: removed
+Jul 19 10:32:40 debian-base postfix/pickup[4291]: D7DDD61200: uid=33 from=<www-data>
+Jul 19 10:32:40 debian-base postfix/cleanup[4503]: D7DDD61200: message-id=<rt-3.8.5-30725-1279546360-315.1255-2-0@pop-es.rnp.br>
+Jul 19 10:32:40 debian-base postfix/qmgr[1950]: D7DDD61200: from=<www-data@pop-es.rnp.br>, size=1186, nrcpt=1 (queue active)
+Jul 19 10:32:42 debian-base postfix/smtp[4505]: D7DDD61200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=1.9, delays=0.03/0/0.55/1.3, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546371 v2si7517812ybh.59)
+Jul 19 10:32:42 debian-base postfix/qmgr[1950]: D7DDD61200: removed
+Jul 19 10:41:39 debian-base postfix/pickup[4291]: 634C561200: uid=33 from=<www-data>
+Jul 19 10:41:39 debian-base postfix/cleanup[4557]: 634C561200: message-id=<rt-3.8.5-30725-1279546899-822.1320-5-0@pop-es.rnp.br>
+Jul 19 10:41:39 debian-base postfix/qmgr[1950]: 634C561200: from=<www-data@pop-es.rnp.br>, size=8828, nrcpt=5 (queue active)
+Jul 19 10:41:42 debian-base postfix/smtp[4559]: 634C561200: to=<magnos@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=3, delays=0.11/0.01/1.3/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546913 f5si11559343anh.4)
+Jul 19 10:41:42 debian-base postfix/smtp[4559]: 634C561200: to=<pedropn@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=3, delays=0.11/0.01/1.3/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546913 f5si11559343anh.4)
+Jul 19 10:41:42 debian-base postfix/smtp[4559]: 634C561200: to=<rezo@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=3, delays=0.11/0.01/1.3/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546913 f5si11559343anh.4)
+Jul 19 10:41:42 debian-base postfix/smtp[4559]: 634C561200: to=<sergiojunior@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=3, delays=0.11/0.01/1.3/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546913 f5si11559343anh.4)
+Jul 19 10:41:42 debian-base postfix/smtp[4559]: 634C561200: to=<thiago@pop-es.rnp.br>, relay=aspmx.l.google.com[74.125.47.27]:25, delay=3, delays=0.11/0.01/1.3/1.6, dsn=2.0.0, status=sent (250 2.0.0 OK 1279546913 f5si11559343anh.4)
+Jul 19 10:41:42 debian-base postfix/qmgr[1950]: 634C561200: removed
+Jul 19 11:00:14 debian-base postfix/pickup[4291]: EE10B61201: uid=0 from=<root>
+Jul 19 11:00:14 debian-base postfix/cleanup[4629]: EE10B61201: message-id=<20100719140014.EE10B61201@debian-base.pop-es.rnp.br>
+Jul 19 11:00:15 debian-base postfix/qmgr[1950]: EE10B61201: from=<root@pop-es.rnp.br>, size=643, nrcpt=1 (queue active)
+Jul 19 11:00:17 debian-base postfix/smtp[4631]: EE10B61201: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.45.27]:25, delay=2.3, delays=0.04/0.01/0.76/1.5, dsn=2.0.0, status=sent (250 2.0.0 OK 1279548017 b27si11525200ana.161)
+Jul 19 11:00:17 debian-base postfix/qmgr[1950]: EE10B61201: removed
+Jul 19 12:00:07 debian-base postfix/pickup[4660]: D73BD61201: uid=0 from=<root>
+Jul 19 12:00:07 debian-base postfix/cleanup[4845]: D73BD61201: message-id=<20100719150007.D73BD61201@debian-base.pop-es.rnp.br>
