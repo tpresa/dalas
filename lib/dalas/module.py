@@ -1,4 +1,7 @@
 from sqlobject import *
+import time
+import fcntl
+import os
 
 class Module:
 	def __init__(self, parameters):
@@ -12,7 +15,7 @@ class Module:
 		while True:
 			line = self.file.readline()
 			if line:
-				self.process(line.strip())
+				self.process(line)
 			else:
 				break
 
@@ -23,10 +26,12 @@ class Module:
 
 	# Open file description
 	def open(self):
-		fd = open(self.parameters["path"], "r")
-		fd.seek(0, 2)
-		return fd
-	
+		file = open(self.parameters["path"], "r+")
+		#fl = fcntl.fcntl(file, fcntl.F_GETFL)
+		#fcntl.fcntl(file, fcntl.F_SETFL, fl | os.O_NONBLOCK)
+		file.seek(0,2)
+		return file
+
 	# Close file description
 	def close(self):
 		return self.file.close()

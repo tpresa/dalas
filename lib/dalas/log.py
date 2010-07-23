@@ -5,3 +5,5 @@ class Log:
 	def process(self, line):
 		print line
 		return True
+
+        
