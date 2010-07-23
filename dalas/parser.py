@@ -3,14 +3,22 @@ import calendar
 
 class DalasParser:
 
+	# Add new child processes here if necessary
+	CHILDPROCESS_DESCRIPTION = {
+		'virtual' : 'Message sent to queue',
+		'smtp' : 'Message sent to recipients',
+		'cleanup' : 'Message is alive',
+		'qmgr' : 'Message removed from queue'
+	}
+
 	# Grammar
 	#FIXME Check these rules
 	MONTH = oneOf(list(calendar.month_abbr)[1:])
-	DAY = Regex("0[1-9]|1[0..9]|2[0-9]|3[01]")
+	DAY = Regex("0[1-9]|1[0-9]|2[0-9]|3[01]")
 	TIME = Regex("([0-1][0-9]|2[01234]):[0-5][0-9]:[0-5][0-9]")
 	HOSTNAME = Word(printables)
 	PROCESSNAME = Regex("postfix")
-	CHILDPROCESS = Regex("virtual|cleanup|smtp")
+	CHILDPROCESS = Regex("|".join(CHILDPROCESS_DESCRIPTION.keys()))
 	PFPID = Word(nums)
 	QUEUEID = Word(alphanums)
 	EMAIL = Regex("[^>]*")
@@ -25,8 +33,9 @@ class DalasParser:
 	CLEANUP = Group(Suppress('message-id=<') + MESSAGEID + Suppress('>'))
 	VIRTUAL = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
 	SMTP = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('orig_to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('delays=') + DELAYS + Suppress(',') + Suppress('dsn=') + DSN + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
-	
-	LOGLINE = Group(MONTH + DAY + TIME + HOSTNAME + PROCESSNAME + Suppress('/') + CHILDPROCESS + Suppress('[') + PFPID + Suppress(']') + Suppress(':') + QUEUEID + Suppress(':') + Or([VIRTUAL, SMTP, CLEANUP]))
+	QMGR = Group(Suppress('removed'))
+
+	LOGLINE = Group(MONTH + DAY + TIME + HOSTNAME + PROCESSNAME + Suppress('/') + CHILDPROCESS + Suppress('[') + PFPID + Suppress(']') + Suppress(':') + QUEUEID + Suppress(':') + Or([VIRTUAL, SMTP, CLEANUP, QMGR]))
 	
 	def __init__(self, input):
 		self.input = input
@@ -52,6 +61,7 @@ class DalasParser:
 		  	  'childprocess' : parsed[5],
 					'pid' : parsed[6],
 					'queueId' : parsed[7],
+					'label' : self.CHILDPROCESS_DESCRIPTION[parsed[5]],
 		  	  'output' : self.formatResult(parsed[5], parsed[8])
 				})
 		return results
@@ -74,8 +84,10 @@ class DalasParser:
 							 'description' : output[4].lstrip('(').rstrip(')') }
 		if actor ==	'cleanup':
 			return { 'message-id' : output[0] }
+		if actor == 'qmgr':
+			return { 'removed' : True }
 		else:
 			return False
 
 # Sample usage
-print DalasParser('../input_data/postfix.log').parse()
+print DalasParser('../input_data/simple.log').parse()
