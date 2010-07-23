@@ -1,5 +1,6 @@
 import time
 from config import *
+from logreads import ReadLogs
 
 # Main application class
 class Dalas:
@@ -23,13 +24,14 @@ class Dalas:
 
 	# Loop in logs analyser
 	def read_loop(self):
-		try:
-		    while True:
-				for log in self.logs:
-					log.read()
-				time.sleep(1)
-		except KeyboardInterrupt:
-		    pass
 		
-		for log in self.logs:
-			log.close()
+		rl = ReadLogs()
+		
+		try:
+			for log in self.logs:
+				rl.append(log)
+			rl.read()
+		except KeyboardInterrupt:
+			pass
+		
+		rl.close()

@@ -7,7 +7,6 @@ class Module:
 	def __init__(self, parameters):
 		self.parameters = parameters
 		self.pipeline = self.create_pipeline()
-		self.file = self.open()
 		self.load_schema(self.connect_db())
 
 	# Read lines in file description
@@ -23,15 +22,12 @@ class Module:
 		for pipe in self.pipeline:
 			if not (pipe.process(line)):
 				break
-			print repr(pipe.process(line)) #FIXME Send to database instead of printing
 
 	# Open file description
 	def open(self):
-		file = open(self.parameters["path"], "r+")
-		#fl = fcntl.fcntl(file, fcntl.F_GETFL)
-		#fcntl.fcntl(file, fcntl.F_SETFL, fl | os.O_NONBLOCK)
-		file.seek(0,2)
-		return file
+		fd = file(self.parameters["path"], "r")
+		fd.seek(0,2)
+		return fd
 
 	# Close file description
 	def close(self):
