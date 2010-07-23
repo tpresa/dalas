@@ -1,4 +1,4 @@
-import select
+import time
 from config import *
 
 class Dalas:
@@ -16,3 +16,17 @@ class Dalas:
 		
 			log = module(name, modConfig["path"], modConfig["database"], modConfig["pipeline"])
 			self.logs.append(log)
+		
+		self.read_loop()
+
+	def read_loop(self):
+		try:
+		    while True:
+				for log in self.logs:
+					log.read()
+				time.sleep(1)
+		except KeyboardInterrupt:
+		    pass
+		
+		for log in self.logs:
+			log.close()
