@@ -38,6 +38,7 @@ class DalasParser:
 			except:
 				return False
 			results.append({
+				'unique' : parsed[7], #FIXME Choose a better unique identifier
 				'month' : parsed[0],
 				'day' : parsed[1],
 		    'time' : parsed[2],
