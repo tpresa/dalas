@@ -4,6 +4,7 @@ import calendar
 class DalasParser:
 
 	# Grammar
+	#FIXME Check these rules
 	MONTH = oneOf(list(calendar.month_abbr)[1:])
 	DAY = Regex("0[1-9]|1[0..9]|2[0-9]|3[01]")
 	TIME = Regex("([0-1][0-9]|2[01234]):[0-5][0-9]:[0-5][0-9]")
@@ -12,17 +13,20 @@ class DalasParser:
 	CHILDPROCESS = Regex("virtual|cleanup|smtp")
 	PFPID = Word(nums)
 	QUEUEID = Word(alphanums)
-	EMAIL = Regex("[^>]*") #FIXME Could be improved
-	MESSAGEID = Regex("[^>]*") #FIXME Could be improved
-	RELAY = Word(alphanums)
-	DELAY = Word(alphanums)
+	EMAIL = Regex("[^>]*")
+	MESSAGEID = Regex("[^>]*")
+	RELAY = Regex("[^,]*")
+	DELAY = Regex("[^,]*")
+	DSN = Regex("[^,]*")
+	DELAYS = Regex("[^,]*")
 	STATUS = Regex("deferred|sent|bounced")
 	STATUSMSG = Regex(".*")
 	
 	CLEANUP = Group(Suppress('message-id=<') + MESSAGEID + Suppress('>'))
-	VIRTUAL_OR_SMTP = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
+	VIRTUAL = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
+	SMTP = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('orig_to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('delays=') + DELAYS + Suppress(',') + Suppress('dsn=') + DSN + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
 	
-	LOGLINE = Group(MONTH + DAY + TIME + HOSTNAME + PROCESSNAME + Suppress('/') + CHILDPROCESS + Suppress('[') + PFPID + Suppress(']') + Suppress(':') + QUEUEID + Suppress(':') + Or([VIRTUAL_OR_SMTP, CLEANUP]))
+	LOGLINE = Group(MONTH + DAY + TIME + HOSTNAME + PROCESSNAME + Suppress('/') + CHILDPROCESS + Suppress('[') + PFPID + Suppress(']') + Suppress(':') + QUEUEID + Suppress(':') + Or([VIRTUAL, SMTP, CLEANUP]))
 	
 	def __init__(self, input):
 		self.input = input
@@ -53,7 +57,16 @@ class DalasParser:
 		return results
 
 	def formatResult(self, actor, output):
-		if actor == 'virtual' or actor == 'smtp':
+		if actor == 'smtp':
+			return { 'to' : output[0],
+							 'orig_to' : output[1],
+							 'relay' : output[2], 
+							 'delay' : output[3],
+							 'delays' : output[4],
+							 'dsn' : output[5],
+							 'status' : output[6], 
+							 'description' : output[7].lstrip('(').rstrip(')') }
+		if actor == 'virtual':
 			return { 'to' : output[0], 
 							 'relay' : output[1], 
 							 'delay' : output[2], 
