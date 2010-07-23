@@ -7,7 +7,7 @@ class DalasParser:
 	MONTH = oneOf(list(calendar.month_abbr)[1:])
 	DAY = Regex("0[1-9]|1[0..9]|2[0-9]|3[01]")
 	TIME = Regex("([0-1][0-9]|2[01234]):[0-5][0-9]:[0-5][0-9]")
-	HOSTNAME = Word(alphanums)
+	HOSTNAME = Word(printables)
 	PROCESSNAME = Regex("postfix")
 	CHILDPROCESS = Regex("virtual|cleanup|smtp")
 	PFPID = Word(nums)
@@ -36,19 +36,20 @@ class DalasParser:
 			try:
 				parsed = self.LOGLINE.parseString(line)[0]
 			except:
-				return False
-			results.append({
-				'unique' : parsed[7], #FIXME Choose a better unique identifier
-				'month' : parsed[0],
-				'day' : parsed[1],
-		    'time' : parsed[2],
-				'hostname' : parsed[3],
-		    'process' : parsed[4],
-		    'childprocess' : parsed[5],
-				'pid' : parsed[6],
-				'queueId' : parsed[7],
-		    'output' : self.formatResult(parsed[5], parsed[8])
-			})
+				pass
+			else:
+				results.append({
+					'unique' : parsed[7], #FIXME Choose a better unique identifier
+					'month' : parsed[0],
+					'day' : parsed[1],
+		  	  'time' : parsed[2],
+					'hostname' : parsed[3],
+		  	  'process' : parsed[4],
+		  	  'childprocess' : parsed[5],
+					'pid' : parsed[6],
+					'queueId' : parsed[7],
+		  	  'output' : self.formatResult(parsed[5], parsed[8])
+				})
 		return results
 
 	def formatResult(self, actor, output):
@@ -64,4 +65,4 @@ class DalasParser:
 			return False
 
 # Sample usage
-print DalasParser('../input_data/simple.log').parse()
+print DalasParser('../input_data/postfix.log').parse()
