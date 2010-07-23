@@ -1,9 +1,10 @@
 postfix:
-    module: mail
-    path: fluxo
+    module: Mail
+    path: "/home/portugues/dalas_sqlobject/dalas/input_data/mail.log.sample"
     database: "sqlite:/:memory:"
-    pipeline:
-        PostfixLog
-        AmavisLog
-        SpamAssassinLog
-        DSpamLog
+    pipeline: [
+          PostfixLog
+        , AmavisLog
+        , SpamAssassinLog
+        , DSpamLog
+   ]
