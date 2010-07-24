@@ -10,19 +10,4 @@ DALAS_VERSION = "0.1"
 sys.path.append(os.path.join(DALAS_PATH, "lib"))
 from dalas import *
 
-# Prints the pidfile
-#f = open('/var/run/dalas.pid','w+')
-#print >>f, os.getpid()
-#f.close()
-
-dalas = Dalas()
-
-# Handles the SIGHUP
-# Logrotate will SIGHUP is when it runs
-# So that we must open our log files again
-def handler(signum, frame):
-    dalas.reopen_all_files()
-# Connect the signal
-signal.signal(signal.SIGHUP, handler)
-# Run
-dalas.run()
+Dalas().run()
