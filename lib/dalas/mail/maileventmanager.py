@@ -2,15 +2,11 @@ from dalas.eventmanager import EventManager
 
 class MailEventManager(EventManager):
 	def __init__(self, module):
-		self.module       	= module
-		self.db		        = module.db
-		self.UniqueQList	= { }
-		self.QueueList    	= { }
-		self.QueueRawData 	= { }
-		self.Queuestatus  	= { }
+		self.module = module
+		self.db		= module.db
 		
-		self.uniqueQs 		= self.db.uniqueQs		
-		self.actor_cmd    = None
+		self.messages   = self.db.messages
+		self.actor_cmd  = None
 		self.cmd = {
 			'smtp'   : self.Smtp,
 			'nqmgr'  : self.Nqmgr,
@@ -21,13 +17,13 @@ class MailEventManager(EventManager):
 
 	def HandleEvent(self, line, data):
 		#Check if queue exist in uniqueQ, if yes glue with event...
-		queue_id  = { "label" : data["unique"] }
-		queue     = self.uniqueQs.find_one(queue_id)
+		msg_id  = { "queue" : data["unique"], "status" : "open" }
+		msg     = self.messages.find_one(msg_id)
 
-		if not queue:
-			queue = self.uniqueQs.insert(queue_id)
+		if not msg:
+			msg = self.messages.insert(msg_id)
 		else:
-		    queue = queue["_id"]
+		    msg = msg["_id"]
 		
 		event  = {
 			"label"     : data['label'],
@@ -41,17 +37,19 @@ class MailEventManager(EventManager):
 			"raw_line"  : line
 		}
 		
-		self.uniqueQs.update({ "_id" : queue }, {"$push":{"events": event}},True)
+		self.messages.update({ "_id" : msg }, {"$push":{"events": event}},True)
+		
+		print "Insert a event in message"
 		
 		#Check if has actor... and execute...
 		if data and self.cmd.has_key(data['childprocess']):
-			self.cmd[data['childprocess']](data, queue)
+			self.cmd[data['childprocess']](data, msg)
 		else: 
 			#FIX-ME: Create handle to exceptions:
 			#need regex to cover
 			return False
 
-	def Smtp(self, data, queue):
+	def Smtp(self, data, msg):
 		# FIX-ME:
 		output = data['output']
 		recipient = {
@@ -65,7 +63,7 @@ class MailEventManager(EventManager):
 			"relay"    : output['relay']
 		}
 		
-		self.uniqueQs.update({ "_id" : queue }, {"$push":{"recipients": recipient}},True)
+		self.messages.update({ "_id" : msg }, {"$push":{"recipients": recipient}},True)
 
 	def Nqmgr(self, data, queue):
 		pass
