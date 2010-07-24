@@ -33,7 +33,7 @@ class PostfixLog(Log):
 
 	CLEANUP = Group(Suppress('message-id=<') + MESSAGEID + Suppress('>'))
 	VIRTUAL = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
-	SMTP    = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('orig_to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('delays=') + DELAYS + Suppress(',') + Suppress('dsn=') + DSN + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
+	SMTP    = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Optional(Suppress('orig_to=<') + EMAIL + Suppress('>,')) + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('delays=') + DELAYS + Suppress(',') + Suppress('dsn=') + DSN + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
 	QMGR    = Group(Suppress('removed'))
 	LOGLINE = Group(MONTH + DAY + TIME + HOSTNAME + PROCESSNAME + Suppress('/') + CHILDPROCESS + Suppress('[') + PFPID + Suppress(']') + Suppress(':') + QUEUEID + Suppress(':') + Or([VIRTUAL, SMTP, CLEANUP, QMGR]))
 
@@ -60,6 +60,8 @@ class PostfixLog(Log):
 
 	def formatResult(self, actor, output):
 		if actor == 'smtp':
+			if len(output) == 7:
+				output.insert(1, False)
 			return { 
 				'to'      : output[0],
 				'orig_to' : output[1],
@@ -84,4 +86,3 @@ class PostfixLog(Log):
 			return { 'removed' : True }
 		else:
 			return False
-
