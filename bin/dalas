@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import os, sys
+import os, sys, signal
 
 DALAS_PATH  = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DALAS_VERSION = "0.1"
@@ -10,5 +10,22 @@ DALAS_VERSION = "0.1"
 sys.path.append(os.path.join(DALAS_PATH, "lib"))
 from dalas import *
 
+# Prints the pidfile
+f = open('/var/run/dalas.pid','w+')
+print >>f, os.getpid()
+f.close()
+
+# Handles the SIGHUP
+# Logrotate will SIGHUP is when it runs
+# So that we must open our log files again
+def handler(signum, frame):
+    print 'Signal handler called with signal', signum
+    raise IOError("Couldn't open device!")
+
+# Connect the signal
+signal.signal(signal.SIGHUP, handler)
 # Run
 Dalas().run()
+
+
+
