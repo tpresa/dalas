@@ -22,7 +22,10 @@ class Module:
 
 	def process(self, line):
 		for pipe in self.pipeline:
-			if not (pipe.process(line)):
+			cont, data = pipe.process(line)
+			if data != None:
+				self.ev_manager.HandleEvent(line, data)
+			if not (cont):
 				break
 
 	# Open file description
