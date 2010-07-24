@@ -5,6 +5,7 @@ from logreads import ReadLogs
 # Main application class
 class Dalas:
 	def __init__(self):
+		self.quit   = False
 		self.config = config()
 		#FIXME: actually this is a list of modules
 		# logs is an awful name
@@ -25,38 +26,43 @@ class Dalas:
 			self.logs.append(log)
 
 		self.read_loop()
-
-	def reopen_all_files(self, signum, frame):
-		print "Reload..."
-		# for log in self.logs:
-		# 	log.reopen_log()
+		
+		if os.path.exists(self.config["args"]["-p"]):
+			os.unlink(self.config["args"]["-p"])
 
 	# Loop in logs analyser
 	def read_loop(self):
 		
-		rl = ReadLogs()
+		self.rl = ReadLogs(self)
 		
 		try:
 			for log in self.logs:
-				rl.append(log)
-			rl.read()
+				self.rl.append(log)
+			self.rl.read()
 		except KeyboardInterrupt:
 			pass
 		
-		rl.close()
+		self.rl.close()
 	
 	def __write_pid(self):
 		f = open(self.config["args"]["-p"],'w+')
 		print >> f, os.getpid()
 		f.close()
 		
+	def __reopen_all_files(self, signum, frame):
+		print "Reload..."
+		# for log in self.logs:
+		# 	log.reopen_log()
+		
 	def __connect_signals(self):
 		# Kill connect
-		# signal.signal(signal.SIGINT, self.__quit)
+		signal.signal(signal.SIGTERM, self.__quit)
 		
 		# Handles the SIGHUP
 		# Logrotate will SIGHUP is when it runs
 		# So that we must open our log files again
-		signal.signal(signal.SIGHUP, self.reopen_all_files)
+		signal.signal(signal.SIGHUP, self.__reopen_all_files)
 	
-	def __quit()
+	def __quit(self, signum, frame):
+		sys.stdout.write("%s\n" % time.strftime("%Y-%m-%d %X: STOP", time.gmtime()))
+		self.quit = True

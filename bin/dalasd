@@ -7,7 +7,7 @@ param=$1
  CONFIG="${DIR}/etc/dalas.yml"
     PID_FILE=/tmp/dalas.pid
 	LOG=/tmp/dalas.log
-COMMAND="${DIR}/bin/dalas -c ${CONFIG} -p ${PID_FILE} 2>>$LOG 1>>$LOG"
+COMMAND="${DIR}/bin/dalas -c ${CONFIG} -p ${PID_FILE}"
 
 start() {
     if [ -f $PID_FILE ]
@@ -16,7 +16,7 @@ start() {
         echo "Already started. PID_FILE: [$( cat $PID_FILE )]"
     else
         echo "==== Start"
-        $COMMAND &
+        $COMMAND >>$LOG 2>&1 &
 		echo "$(date '+%Y-%m-%d %X'): START" >> $LOG
     fi
 }
@@ -65,8 +65,8 @@ stop() {
         then echo "Done."
              echo "$(date '+%Y-%m-%d %X'): STOP" >>$LOG
         fi
-        /bin/rm $PID_FILE
-        kill_cmd $PID
+        # /bin/rm $PID_FILE
+        # kill_cmd $PID
     else
         echo "No PID_FILE file. Already stopped?"
     fi
