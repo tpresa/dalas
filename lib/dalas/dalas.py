@@ -9,8 +9,8 @@ class Dalas:
 		#FIXME: actually this is a list of modules
 		# logs is an awful name
 		self.logs   = []
-		self.__write_pid()
 		self.__connect_signals()
+		self.__write_pid()
 
 	def run(self):
 		for name in self.config["logs"]:
@@ -51,7 +51,12 @@ class Dalas:
 		f.close()
 		
 	def __connect_signals(self):
+		# Kill connect
+		# signal.signal(signal.SIGINT, self.__quit)
+		
 		# Handles the SIGHUP
 		# Logrotate will SIGHUP is when it runs
 		# So that we must open our log files again
 		signal.signal(signal.SIGHUP, self.reopen_all_files)
+	
+	def __quit()

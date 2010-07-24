@@ -43,7 +43,11 @@ class ReadLogs():
 		
 	def __wait(self):
 		if self.kq:
-			evts = self.kq.control([], 1, None)
+			try:
+				evts = self.kq.control([], 1, None)
+			except OSError:
+				evts = []
+				
 			return [e.ident for e in evts]
 		else:
 			evts = self.poll.poll(0)
