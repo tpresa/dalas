@@ -8,6 +8,7 @@ class PostfixLog(Log):
 	CHILDPROCESS_DESCRIPTION = {
 		'virtual' : 'Message sent to queue',
 		'smtp'    : 'Message sent to recipients',
+		'smtpd'   : 'Message is being delivered',
 		'cleanup' : 'Message is alive',
 		'qmgr'    : 'Message removed from queue'
 	}
@@ -35,12 +36,18 @@ class PostfixLog(Log):
 	PROTOCOL     = Word(printables)
 	CLEANUP_SIMPLE = Group(Suppress('message-id=<') + MESSAGEID + Suppress('>'))
 	CLEANUP_WITH_SUBJECT = Group(Suppress('warning: header Subject: ') + SUBJECT + Suppress('from') + ORIGIN + Suppress('; from=<') + EMAIL + Suppress('> to=<') + EMAIL + Suppress('> proto=') + PROTOCOL)
-	
+	CLIENT = Regex("[^,]*")
+	LOGIN = Regex("[^,]*")
+	SMTPD_SIMPLE = Group(Suppress('client=') + CLIENT)
+	SMTPD_WITH_SASL = Group(Suppress('client=') + CLIENT + Suppress(', sasl_method=') + LOGIN + Suppress(', sasl_username=') + EMAIL)
+
 	CLEANUP = Or([CLEANUP_SIMPLE, CLEANUP_WITH_SUBJECT])
 	VIRTUAL = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
 	SMTP    = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Optional(Suppress('orig_to=<') + EMAIL + Suppress('>,')) + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('delays=') + DELAYS + Suppress(',') + Suppress('dsn=') + DSN + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
 	QMGR    = Group(Suppress('removed'))
-	LOGLINE = Group(MONTH + DAY + TIME + HOSTNAME + PROCESSNAME + Suppress('/') + CHILDPROCESS + Suppress('[') + PFPID + Suppress(']') + Suppress(':') + QUEUEID + Suppress(':') + Or([VIRTUAL, SMTP, CLEANUP, QMGR]))
+	SMTPD = Or([SMTPD_WITH_SASL, SMTPD_SIMPLE])
+
+	LOGLINE = Group(MONTH + DAY + TIME + HOSTNAME + PROCESSNAME + Suppress('/') + CHILDPROCESS + Suppress('[') + PFPID + Suppress(']') + Suppress(':') + QUEUEID + Suppress(':') + Or([VIRTUAL, SMTP, CLEANUP, QMGR, SMTPD]))
 
 	def process(self, line):
 		try:
@@ -98,5 +105,13 @@ class PostfixLog(Log):
 				}
 		elif actor == 'qmgr':
 			return { 'removed' : True }
+		elif actor == 'smtpd':
+			if len(output) == 1:
+				return { 'client' : output[0] }
+			else:
+				return { 'client' : output[0],
+								 'sasl_method' : output [1],
+								 'sasl_username' : output[2]
+							 }
 		else:
 			return False
