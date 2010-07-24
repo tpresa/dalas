@@ -38,8 +38,8 @@ class PostfixLog(Log):
 	CLEANUP_WITH_SUBJECT = Group(Suppress('warning: header Subject: ') + SUBJECT + Suppress('from') + ORIGIN + Suppress('; from=<') + EMAIL + Suppress('> to=<') + EMAIL + Suppress('> proto=') + PROTOCOL)
 	CLIENT = Regex("[^,]*")
 	LOGIN = Regex("[^,]*")
-	SMTPD_SIMPLE = Group(Suppress('client=') + CLIENT)
-	SMTPD_WITH_SASL = Group(Suppress('client=') + CLIENT + Suppress(', sasl_method=') + LOGIN + Suppress(', sasl_username=') + EMAIL)
+	SMTPD_SIMPLE = Group(Suppress('client=') + Word(printables))
+	SMTPD_WITH_SASL = Group(Suppress('client=') + CLIENT + Suppress(', sasl_method=') + LOGIN + Suppress(', sasl_username=') + Word(printables))
 
 	CLEANUP = Or([CLEANUP_SIMPLE, CLEANUP_WITH_SUBJECT])
 	VIRTUAL = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
