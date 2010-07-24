@@ -1,10 +1,31 @@
 postfix:
     module: Mail
     path: "/home/portugues/dalas_sqlobject/dalas/input_data/mail.log.sample"
-    database: "sqlite:/:memory:"
+    database:
+        host: localhost
+        port: 27017
     pipeline: [
           PostfixLog
         , AmavisLog
         , SpamAssassinLog
         , DSpamLog
    ]
+iptables:
+    module: Firewall
+    path: /var/log/httpd/access_log
+    database:
+        host: localhost
+        port: 27017
+    pipeline: [
+        IptablesLog,
+        SquidLog
+    ]
+# apache2:
+#     module: Apache
+#     path: /var/log/apache2/access_log
+#     database:
+#         host: localhost
+#         port: 27017
+#     pipeline: [
+#         HttpLog
+#     ]
