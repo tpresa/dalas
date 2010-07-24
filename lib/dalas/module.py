@@ -1,4 +1,3 @@
-from sqlobject import *
 import time
 import fcntl
 import os
