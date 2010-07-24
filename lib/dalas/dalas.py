@@ -1,4 +1,4 @@
-import time
+import time, os, signal
 from config import *
 from logreads import ReadLogs
 
@@ -9,6 +9,8 @@ class Dalas:
 		#FIXME: actually this is a list of modules
 		# logs is an awful name
 		self.logs   = []
+		self.__write_pid()
+		self.__connect_signals()
 
 	def run(self):
 		for name in self.config["logs"]:
@@ -24,9 +26,11 @@ class Dalas:
 
 		self.read_loop()
 
-	def reopen_all_files(self):
-		for log in self.logs:
-			log.reopen_log()
+	def reopen_all_files(self, signum, frame):
+		print "Reload..."
+		# for log in self.logs:
+		# 	log.reopen_log()
+
 	# Loop in logs analyser
 	def read_loop(self):
 		
@@ -40,3 +44,14 @@ class Dalas:
 			pass
 		
 		rl.close()
+	
+	def __write_pid(self):
+		f = open(self.config["args"]["-p"],'w+')
+		print >> f, os.getpid()
+		f.close()
+		
+	def __connect_signals(self):
+		# Handles the SIGHUP
+		# Logrotate will SIGHUP is when it runs
+		# So that we must open our log files again
+		signal.signal(signal.SIGHUP, self.reopen_all_files)
