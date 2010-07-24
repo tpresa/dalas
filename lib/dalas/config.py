@@ -30,7 +30,10 @@ def getProgramArgs():
 			usage()
 		lastArg = arg
 
-		if arg == '-c' or arg == '--conf':
+		if arg == '-p' or arg == '--pid':
+			readArgs['-p'] = 2
+			lastArg = '-p'
+		elif arg == '-c' or arg == '--conf':
 			readArgs['-c'] = 2
 			lastArg = '-c'
 		elif arg == '-v' or arg == '--version':

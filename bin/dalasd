@@ -1,0 +1,113 @@
+#!/bin/bash
+#
+
+param=$1
+
+    DIR=`dirname $0`/..
+ CONFIG="${DIR}/etc/dalas.yml"
+    PID_FILE=/tmp/dalas.pid
+	LOG=/tmp/dalas.log
+COMMAND="${DIR}/bin/dalas -c ${CONFIG} -p ${PID_FILE} 2>>$LOG 1>>$LOG"
+
+start() {
+    if [ -f $PID_FILE ]
+    then
+        echo
+        echo "Already started. PID_FILE: [$( cat $PID_FILE )]"
+    else
+        echo "==== Start"
+        $COMMAND &
+		echo "$(date '+%Y-%m-%d %X'): START" >> $LOG
+    fi
+}
+
+status() {
+    echo
+    echo "==== Status"
+
+    if [ -f $PID_FILE ]
+    then
+        echo
+        echo "PID_FILE file: $( cat $PID_FILE ) [$PID_FILE]"
+        echo
+        ps -ef | grep -v grep | grep $( cat $PID_FILE )
+    else
+        echo
+        echo "No PID_FILE file"
+    fi
+}
+
+kill_cmd() {
+    SIGNAL=""; MSG="Killing "
+    while true
+    do
+        LIST=`ps -ef | grep -v grep | grep $1 | awk '{print $2}'`
+        if [ "$LIST" ]
+        then
+            echo; echo "$MSG $LIST" ; echo
+            echo $LIST | xargs kill $SIGNAL
+            sleep 5
+            SIGNAL="-9" ; MSG="Killing $SIGNAL"
+        else
+           echo; echo "All killed..." ; echo
+           break
+        fi
+    done
+}
+
+stop() {
+    echo "==== Stop"
+
+    if [ -f $PID_FILE ]
+    then
+        PID=$( cat $PID_FILE )
+		if kill $PID
+        then echo "Done."
+             echo "$(date '+%Y-%m-%d %X'): STOP" >>$LOG
+        fi
+        /bin/rm $PID_FILE
+        kill_cmd $PID
+    else
+        echo "No PID_FILE file. Already stopped?"
+    fi
+}
+
+reload() {
+	echo "==== Reload files"
+	if [ -f $PID_FILE ]
+	then
+		kill -HUP $( cat $PID_FILE )
+		echo "Done"
+		echo "$(date '+%Y-%m-%d %X'): RELOAD" >>$LOG
+    else
+        echo "No PID_FILE file. Already reload?"
+	fi
+}
+
+case "$1" in
+    'start')
+            start
+            ;;
+    'stop')
+            stop
+            ;;
+    'restart')
+            stop ; echo "Sleeping..."; sleep 1 ;
+            start
+            ;;
+    'status')
+            status
+            ;;
+    'reload')
+            reload
+            ;;
+    *)
+            echo
+            echo "Usage: $0 { start | stop | restart | status }"
+            echo
+            exit 1
+            ;;
+esac
+
+exit 0
+

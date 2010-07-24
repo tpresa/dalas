@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import os, sys, signal
+import os, sys
 
 DALAS_PATH  = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 DALAS_VERSION = "0.1"
@@ -26,6 +26,3 @@ def handler(signum, frame):
 signal.signal(signal.SIGHUP, handler)
 # Run
 dalas.run()
-
-
-
