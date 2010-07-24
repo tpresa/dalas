@@ -22,9 +22,12 @@ class MailEventManager(EventManager):
 	def HandleEvent(self, line, data):
 		#Check if queue exist in uniqueQ, if yes glue with event...
 		queue_id  = { "label" : data["unique"] }
-		
-		if not (queue = self.uniqueQs.find_one(queue_id)):
+		queue     = self.uniqueQs.find_one(queue_id)
+
+		if not queue:
 			queue = self.uniqueQs.insert(queue_id)
+		else:
+		    queue = queue["_id"]
 		
 		event  = {
 			"label"     : data['label'],
@@ -38,7 +41,7 @@ class MailEventManager(EventManager):
 			"raw_line"  : line
 		}
 		
-		self.uniqueQs.update(queue_id, {"$push":{"events": event}},True)
+		self.uniqueQs.update({ "_id" : queue }, {"$push":{"events": event}},True)
 		
 		#Check if has actor... and execute...
 		if data and self.cmd.has_key(data['childprocess']):
@@ -62,8 +65,7 @@ class MailEventManager(EventManager):
 			"relay"    : output['relay']
 		}
 		
-		self.uniqueQs.update(queue_id, {"$push":{"recipients": recipient}},True)
-		
+		self.uniqueQs.update({ "_id" : queue }, {"$push":{"recipients": recipient}},True)
 
 	def Nqmgr(self, data, queue):
 		pass
