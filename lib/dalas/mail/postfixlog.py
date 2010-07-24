@@ -45,7 +45,7 @@ class PostfixLog(Log):
 		except:
 			pass
 		else:
-			return {
+			result = {
 				'unique' : parsed[7], #FIXME Choose a better unique identifier
 				'month' : parsed[0],
 				'day' : parsed[1],
@@ -58,6 +58,8 @@ class PostfixLog(Log):
 				'label' : self.CHILDPROCESS_DESCRIPTION[parsed[5]],
 		    'output' : self.formatResult(parsed[5], parsed[8])
 			}
+
+			self.module.db.logs.insert(result)
 
 	def formatResult(self, actor, output):
 		if actor == 'smtp':

@@ -2,12 +2,14 @@ from sqlobject import *
 import time
 import fcntl
 import os
+import pymongo
 
 class Module:
-	def __init__(self, parameters):
+	def __init__(self, name, parameters):
+		self.name = name
 		self.parameters = parameters
 		self.pipeline = self.create_pipeline()
-		self.load_schema(self.connect_db())
+		self.db = self.connect_db()
 
 	# Read lines in file description
 	def read(self):
@@ -35,8 +37,9 @@ class Module:
 
 	# Connection to database
 	def connect_db(self):
-		return connectionForURI(self.parameters["database"])
-	
+		conn = pymongo.Connection(self.parameters["database"]["host"], self.parameters["database"]["port"])
+		return conn[self.name]
+
 	# Create a pipeline objects
 	def create_pipeline(self):
 		pipes = []

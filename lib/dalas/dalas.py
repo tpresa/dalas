@@ -17,7 +17,7 @@ class Dalas:
 			module = getattr(module, "%s" % modConfig["module"].lower())
 			module = getattr(module, modConfig["module"])
 
-			log = module(modConfig)
+			log = module(name, modConfig)
 			self.logs.append(log)
 
 		self.read_loop()
