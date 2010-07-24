@@ -2,11 +2,14 @@ from dalas.eventmanager import EventManager
 
 class MailEventManager(EventManager):
 	def __init__(self, module):
-		self.module       = module
-		self.db           = module.db
-		self.QueueList    = { }
-		self.QueueRawData = { }
-		self.Queuestatus  = { }
+		self.module       	= module
+		self.db		        = module.db
+		self.UniqueQList	= { }
+		self.QueueList    	= { }
+		self.QueueRawData 	= { }
+		self.Queuestatus  	= { }
+		
+		self.uniqueQs 		= self.db.uniqueQs		
 		self.actor_cmd    = None
 		self.cmd = {
 			'smtp'   : self.Smtp,
@@ -17,6 +20,12 @@ class MailEventManager(EventManager):
 		}
 
 	def HandleEvent(self, line, data):
+		#Check if queue exist in uniqueQ, if yes glue with event...
+		queue_id  = { "label" : data["unique"] }
+		
+		if not (queue = self.uniqueQs.find_one(queue_id)):
+			queue = self.uniqueQs.insert(queue_id)
+		
 		event  = {
 			"label"     : data['label'],
 			"raw_month" : data['month'],
@@ -28,19 +37,18 @@ class MailEventManager(EventManager):
 			"raw_pid"   : data['pid'],
 			"raw_line"  : line
 		}
-		self.db.events.insert(event)
 		
-		print "Save a event..."
-
+		self.uniqueQs.update(queue_id, {"$push":{"events": event}},True)
+		
 		#Check if has actor... and execute...
 		if data and self.cmd.has_key(data['childprocess']):
-			self.cmd[data['childprocess']](data)
-		else:
+			self.cmd[data['childprocess']](data, queue)
+		else: 
 			#FIX-ME: Create handle to exceptions:
 			#need regex to cover
 			return False
 
-	def Smtp(self, data):
+	def Smtp(self, data, queue):
 		# FIX-ME:
 		output = data['output']
 		recipient = {
@@ -53,18 +61,18 @@ class MailEventManager(EventManager):
 			"status"   : output['status'],
 			"relay"    : output['relay']
 		}
-		self.db.recipients.insert(recipient)
 		
-		print "Save a recipient..."
+		self.uniqueQs.update(queue_id, {"$push":{"recipients": recipient}},True)
+		
 
-	def Nqmgr(self, data):
+	def Nqmgr(self, data, queue):
 		pass
 
-	def Qmgr(self, data):
+	def Qmgr(self, data, queue):
 		pass
 	
-	def CleanUp(self, data):
+	def CleanUp(self, data, queue):
 		pass
 
-	def PickUp(self, data):
+	def PickUp(self, data, queue):
 		pass
