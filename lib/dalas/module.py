@@ -33,6 +33,10 @@ class Module:
 		fd.seek(0,2)
 		return fd
 
+	def reopen_log(self):
+		self.file.close()
+		self.file = file(self.parameters["path"], "r")
+
 	# Close file description
 	def close(self):
 		return self.file.close()
