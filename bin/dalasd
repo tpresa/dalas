@@ -17,7 +17,6 @@ start() {
     else
         echo "==== Start"
         $COMMAND >>$LOG 2>&1 &
-		echo "$(date '+%Y-%m-%d %X'): START" >> $LOG
     fi
 }
 
@@ -37,24 +36,6 @@ status() {
     fi
 }
 
-kill_cmd() {
-    SIGNAL=""; MSG="Killing "
-    while true
-    do
-        LIST=`ps -ef | grep -v grep | grep $1 | awk '{print $2}'`
-        if [ "$LIST" ]
-        then
-            echo; echo "$MSG $LIST" ; echo
-            echo $LIST | xargs kill $SIGNAL
-            sleep 5
-            SIGNAL="-9" ; MSG="Killing $SIGNAL"
-        else
-           echo; echo "All killed..." ; echo
-           break
-        fi
-    done
-}
-
 stop() {
     echo "==== Stop"
 
@@ -62,11 +43,8 @@ stop() {
     then
         PID=$( cat $PID_FILE )
 		if kill $PID
-        then echo "Done."
-             echo "$(date '+%Y-%m-%d %X'): STOP" >>$LOG
-        fi
-        # /bin/rm $PID_FILE
-        # kill_cmd $PID
+			then echo "Done."
+		fi
     else
         echo "No PID_FILE file. Already stopped?"
     fi
@@ -78,7 +56,6 @@ reload() {
 	then
 		kill -HUP $( cat $PID_FILE )
 		echo "Done"
-		echo "$(date '+%Y-%m-%d %X'): RELOAD" >>$LOG
     else
         echo "No PID_FILE file. Already reload?"
 	fi

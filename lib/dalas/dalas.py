@@ -14,6 +14,8 @@ class Dalas:
 		self.__write_pid()
 
 	def run(self):
+		print time.strftime("%Y-%m-%d %X: STARTED", time.gmtime())
+		
 		for name in self.config["logs"]:
 			modConfig = self.config["logs"][name]
 			
@@ -48,12 +50,11 @@ class Dalas:
 		f = open(self.config["args"]["-p"],'w+')
 		print >> f, os.getpid()
 		f.close()
-		
+
 	def __reopen_all_files(self, signum, frame):
-		print "Reload..."
-		# for log in self.logs:
-		# 	log.reopen_log()
-		
+		print time.strftime("%Y-%m-%d %X: RELOADED", time.gmtime())
+		self.rl.reload()
+
 	def __connect_signals(self):
 		# Kill connect
 		signal.signal(signal.SIGTERM, self.__quit)
@@ -62,7 +63,7 @@ class Dalas:
 		# Logrotate will SIGHUP is when it runs
 		# So that we must open our log files again
 		signal.signal(signal.SIGHUP, self.__reopen_all_files)
-	
+
 	def __quit(self, signum, frame):
-		sys.stdout.write("%s\n" % time.strftime("%Y-%m-%d %X: STOP", time.gmtime()))
+		print time.strftime("%Y-%m-%d %X: STOPED", time.gmtime())
 		self.quit = True

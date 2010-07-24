@@ -1,5 +1,6 @@
 import fcntl, os
 from select import *
+# import threading
 
 class ReadLogs():
 	kq   = None
@@ -29,6 +30,12 @@ class ReadLogs():
 		log.file = flog
 		self.logs.append(log)
 	
+	# def read_lines(self):
+	# 	while True:
+	# 		if not log.read():
+	# 			break
+	# 	threading.current_thread().
+
 	def read(self):
 		while not self.dalas.quit :
 			evts = self.__wait()
@@ -38,17 +45,17 @@ class ReadLogs():
 						if log.file.fileno() == ev:
 							log.read()
 							break
-	
+
+	def reload(self):
+		pass
+
 	def close(self):
 		self.__close()
 		[log.file.close() for log in self.logs]
 		
 	def __wait(self):
 		if self.kq:
-			try:
-				evts = self.kq.control([], 1, 1)
-			except:
-				evts = []
+			evts = self.kq.control([], 1, None)
 				
 			return [e.ident for e in evts]
 		else:
