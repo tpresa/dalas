@@ -15,7 +15,7 @@ class PostfixLog(Log):
 	# Grammar
 	#FIXME Check these rules
 	MONTH        = oneOf(list(calendar.month_abbr)[1:])
-	DAY          = Regex("0[1-9]|1[0-9]|2[0-9]|3[01]")
+	DAY          = Regex("0?[1-9]|1[0-9]|2[0-9]|3[01]")
 	TIME         = Regex("([0-1][0-9]|2[01234]):[0-5][0-9]:[0-5][0-9]")
 	HOSTNAME     = Word(printables)
 	PROCESSNAME  = Regex("postfix")
@@ -45,7 +45,8 @@ class PostfixLog(Log):
 	def process(self, line):
 		try:
 			parsed = self.LOGLINE.parseString(line)[0]
-		except:
+		except :
+			
 			pass
 			return (True, None)
 		else:
