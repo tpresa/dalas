@@ -15,7 +15,7 @@ class PostfixLog(Log):
 	# Grammar
 	#FIXME Check these rules
 	MONTH        = oneOf(list(calendar.month_abbr)[1:])
-	DAY          = Regex("0[1-9]|1[0-9]|2[0-9]|3[01]")
+	DAY          = Regex("0?[1-9]|1[0-9]|2[0-9]|3[01]")
 	TIME         = Regex("([0-1][0-9]|2[01234]):[0-5][0-9]:[0-5][0-9]")
 	HOSTNAME     = Word(printables)
 	PROCESSNAME  = Regex("postfix")
@@ -30,8 +30,13 @@ class PostfixLog(Log):
 	DELAYS       = Regex("[^,]*")
 	STATUS       = Regex("deferred|sent|bounced")
 	STATUSMSG    = Regex(".*")
-
-	CLEANUP = Group(Suppress('message-id=<') + MESSAGEID + Suppress('>'))
+	SUBJECT      = SkipTo(' from')
+	ORIGIN       = Regex("[^;]*")
+	PROTOCOL     = Word(printables)
+	CLEANUP_SIMPLE = Group(Suppress('message-id=<') + MESSAGEID + Suppress('>'))
+	CLEANUP_WITH_SUBJECT = Group(Suppress('warning: header Subject: ') + SUBJECT + Suppress('from') + ORIGIN + Suppress('; from=<') + EMAIL + Suppress('> to=<') + EMAIL + Suppress('> proto=') + PROTOCOL)
+	
+	CLEANUP = Or([CLEANUP_SIMPLE, CLEANUP_WITH_SUBJECT])
 	VIRTUAL = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
 	SMTP    = Group(Suppress('to=<') + EMAIL + Suppress('>,') + Optional(Suppress('orig_to=<') + EMAIL + Suppress('>,')) + Suppress('relay=') + RELAY + Suppress(',') + Suppress('delay=') + DELAY + Suppress(',') + Suppress('delays=') + DELAYS + Suppress(',') + Suppress('dsn=') + DSN + Suppress(',') + Suppress('status=') + STATUS + STATUSMSG)
 	QMGR    = Group(Suppress('removed'))
@@ -81,7 +86,15 @@ class PostfixLog(Log):
 				'description' : output[4].lstrip('(').rstrip(')')
 			}
 		elif actor == 'cleanup':
-			return { 'message-id' : output[0] }
+			if len(output) == 1:
+				return { 'message-id' : output[0] }
+			else:
+				return { 'subject' : output[0], 
+								 'origin' : output[1],
+								 'from' : output[2],
+								 'to' : output[3],
+								 'protocol' : output[4]
+				}
 		elif actor == 'qmgr':
 			return { 'removed' : True }
 		else:
