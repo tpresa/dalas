@@ -45,7 +45,8 @@ class PostfixLog(Log):
 	def process(self, line):
 		try:
 			parsed = self.LOGLINE.parseString(line)[0]
-		except:
+		except :
+			
 			pass
 			return (True, None)
 		else:
