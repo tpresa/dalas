@@ -1,4 +1,3 @@
-Aug 28 06:28:04 web49 postfix/virtual[31637]: 629D73C8130: to=<awimmers@flstatedist.com>, relay=virtual, delay=0, status=sent (delivered to maildir)
 Aug 28 06:28:03 web49 postfix/cleanup[31635]: 0C2713C8130: message-id=<9F26C53AF6A5534B89F65E155C0FB06301E95808@ususo03ex08.use.ucdp.net>
 Jul 18 14:00:08 debian-base postfix/qmgr[1950]: B6B7B61201: removed
 Jul 18 06:25:09 debian-base postfix/smtp[30721]: 3FD7A611BC: to=<root@pop-es.rnp.br>, orig_to=<root>, relay=aspmx.l.google.com[74.125.157.27]:25, delay=7, delays=4.9/0.01/0.38/1.8, dsn=2.0.0, status=sent (250 2.0.0 OK 1279445113 v2si8941642anf.10)

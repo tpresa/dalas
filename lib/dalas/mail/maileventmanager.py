@@ -15,6 +15,7 @@ class MailEventManager(EventManager):
 			'pickup' : self.PickUp
 		}
 
+
 	def HandleEvent(self, line, data):
 		#Check if queue exist in uniqueQ, if yes glue with event...
 		msg_id  = { "queue" : data["unique"], "status" : "open" }
@@ -52,6 +53,7 @@ class MailEventManager(EventManager):
 	def Smtp(self, data, msg):
 		# FIX-ME:
 		output = data['output']
+		
 		recipient = {
 			"queue"    : data['unique'],
 			"label"    : 'send to: %s' % output['to'],
@@ -63,16 +65,32 @@ class MailEventManager(EventManager):
 			"relay"    : output['relay']
 		}
 		
+		#Do not insert if recipients exists, just update status...
+		#
 		self.messages.update({ "_id" : msg }, {"$push":{"recipients": recipient}},True)
 
+
 	def Nqmgr(self, data, queue):
+		#I dont know what i do.... : )
 		pass
 
 	def Qmgr(self, data, queue):
-		pass
+		# Just check if removed is true,  and close msg...
+		# otherwise, update state label....
+		print data,queue
 	
-	def CleanUp(self, data, queue):
-		pass
+	
+	
+	def CleanUp(self, data, msg):
+		#make message human redeable...
+		#receive From, and Subjects...
+		#output = data['output']
+		print data
+		#self.messages.update({ "_id" : msg }, {"$push":{"recipients": recipient}},True)
+		
+		
+		
+		
 
 	def PickUp(self, data, queue):
-		pass
+		print data,queue
