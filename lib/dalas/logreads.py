@@ -5,7 +5,9 @@ class ReadLogs():
 	kq   = None
 	poll = None
 	
-	def __init__(self):
+	def __init__(self, dalas):
+		self.dalas = dalas
+
 		try:
 			self.kq   = kqueue()
 		except:
@@ -28,7 +30,7 @@ class ReadLogs():
 		self.logs.append(log)
 	
 	def read(self):
-		while True:
+		while not self.dalas.quit :
 			evts = self.__wait()
 			if len(evts):
 				for ev in evts:
@@ -44,13 +46,13 @@ class ReadLogs():
 	def __wait(self):
 		if self.kq:
 			try:
-				evts = self.kq.control([], 1, None)
-			except OSError:
+				evts = self.kq.control([], 1, 1)
+			except:
 				evts = []
 				
 			return [e.ident for e in evts]
 		else:
-			evts = self.poll.poll(0)
+			evts = self.poll.poll(1)
 			return [e[0] for e in evts]
 
 	def __close(self):
@@ -59,7 +61,7 @@ class ReadLogs():
 		else:
 			[self.poll.unregister(log.file.fileno()) for log in self.logs]
 			return self.poll.close()
-		
+
 	def __register_file(self, fd):
 		if self.kq:
 			ev = kevent(fd, KQ_FILTER_READ, KQ_EV_ADD | KQ_EV_ENABLE)
