@@ -6,6 +6,8 @@ from logreads import ReadLogs
 class Dalas:
 	def __init__(self):
 		self.config = config()
+		#FIXME: actually this is a list of modules
+		# logs is an awful name
 		self.logs   = []
 
 	def run(self):
@@ -22,6 +24,9 @@ class Dalas:
 
 		self.read_loop()
 
+	def reopen_all_files(self):
+		for log in self.logs:
+			log.reopen_log()
 	# Loop in logs analyser
 	def read_loop(self):
 		
