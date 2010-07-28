@@ -53,8 +53,6 @@ class PostfixLog(Log):
 		try:
 			parsed = self.LOGLINE.parseString(line)[0]
 		except :
-			
-			pass
 			return (True, None)
 		else:
 			return (False, {
